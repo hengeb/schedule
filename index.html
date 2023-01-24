@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stundenplan</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="control no-print">
+      <div>
+        <label>Klasse:</label
+        ><select name="class" id="class"></select>
+      </div>
+      <div>
+        <label>Lehrkraft:</label
+        ><select name="teacher" id="teacher"></select>
+      </div>
+      <div>
+        <label>Raum:</label
+        ><select name="room" id="room"></select>
+      </div>
+      <div>
+        <label>Fach:</label
+        ><select name="subject" id="subject"></select>
+      </div>
+      <div class="right">
+        <button id="print">PDF / drucken</button>
+      </div>
+    </div>
+    <p class="no-print available-teachers-info clear">
+      Angezeigt werden Lehrkräfte, die nicht eingesetzt sind, aber in einem
+      angrenzenden Unterrichtsblock eingesetzt sind.
+    </p>
+    <p class="no-print room-info clear">
+      <strong>Hinweis:</strong> Auf dem Raumplan stehen nur die regelmäßigen
+      Belegungen, nicht diejenigen, die zusätzlich im
+      <a
+        href="https://moodle.gymnasium-broich.de/mod/wiki/view.php?pageid=188"
+        target="_parent"
+        >Buchungssystem</a
+      >
+      eingetragen wurden.
+    </p>
+    <p class="time">Stand: <span id="time"></span></p>
+    <h1 id="title" class="print-only">Stundenplan</h1>
+    <div id="schedules" class="clear"></div>
+    <template id="weekTpl">
+      <div class="week" data-week="">
+        <h2 class="week-title"></h2>
+        <div>
+          <table border>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Montag</th>
+                <th>Dienstag</th>
+                <th>Mittwoch</th>
+                <th>Donnerstag</th>
+                <th>Freitag</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </template>
+    <template id="hourTpl">
+      <tr data-hour="">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </template>
+    <template id="entryTpl">
+      <div class="entry">
+        <div class="entry__class"></div>
+        <div class="entry__teacher"></div>
+        <div class="entry__subject"></div>
+        <div class="entry__room"></div>
+      </div>
+    </template>
+    <template id="monitorTpl">
+      <div class="monitor">
+        <div></div>
+      </div>
+    </template>
+
+    <script src="schedule.js" type="module"></script>
+    <script src="resize-iframe.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font: 12pt sans-serif;
+  color: #222;
+}
+
+.control {
+  align-items: stretch;
+  gap: 2rem;
+  justify-content: space-between;
+}
+.control > div {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 10px;
+}
+.control > div:last-child {
+  flex: 1;
+  min-width: 110px;
+}
+
+label {
+  display: inline-block;
+  width: 100px;
+}
+select {
+  min-width: 100px;
+  height: 30px;
+  width: 100%;
+}
+.right {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+button {
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.week > div {
+  width: 100%;
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table :is(th, td) {
+  border: 1px solid #333;
+  padding: 5px;
+}
+
+tr {
+  width: 100%;
+}
+
+:is(td, th):first-child {
+  width: 30px;
+  text-align: center;
+}
+:is(td, th):not(:first-child) {
+  width: 19%;
+  min-width: 120px;
+}
+
+td > div {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+td > div > div {
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+body:not(:has(#room option[value="0"]:checked)) .entry__room {
+  display: none;
+}
+body:not(:has(#teacher option[value="0"]:checked)) .entry__teacher {
+  display: none;
+}
+body:not(:has(#class option[value="0"]:checked)) .entry__class {
+  display: none;
+}
+
+.highlight,
+.highlight .monitor > div {
+  background-color: rgb(250, 255, 100);
+}
+
+/** hide empty blocks
+ * first row number is odd and row does not contain a div element and neither do all of the following rows
+ */
+tbody tr:nth-child(odd):not(:has(div)):not(:has(~ tr div)),
+tbody tr:nth-child(odd):not(:has(div)):not(:has(~ tr div)) ~ tr {
+  display: none;
+}
+.week:not(:has(td div)) {
+  display: none;
+}
+
+td {
+  position: relative;
+}
+
+td:not(:first-child):not(:has(.entry)) {
+  background-color: #eee;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+td:first-child {
+  height: 35px;
+}
+
+.monitor {
+  position: absolute;
+  top: -0.6em;
+  left: 0;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.monitor > div {
+  display: inline-block;
+  margin: auto;
+  border: 1px solid #333;
+  background: white;
+}
+
+.print-only {
+  display: none;
+}
+
+@media print {
+  html,
+  body {
+    height: 99%;
+  }
+
+  body {
+    font: 10pt sans-serif;
+  }
+
+  .print-only {
+    display: initial;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .week {
+    break-inside: avoid;
+  }
+
+  .week > div {
+    overflow-x: visible;
+  }
+
+  .time {
+    position: fixed;
+    bottom: 0px;
+  }
+}
+
+body:not(:has(#teacher option.show-available-teachers-info:checked))
+  .available-teachers-info {
+  display: none;
+}
+body:not(:has(#room option.show-room-info:checked)) .room-info {
+  display: none;
+}
+
+.available-teachers-info,
+.room-info {
+  background-color: rgb(250, 255, 100);
+  border-radius: 5px;
+  border: 1px solid #fc0;
+  padding: 1em;
+}
+
+@media (min-width: 950px) {
+  .control {
+    display: flex;
+  }
+
+  .control > div {
+    margin-bottom: 0px;
+  }
+
+  label {
+    width: auto;
+  }
+
+  .time {
+    float: right;
+  }
+}
