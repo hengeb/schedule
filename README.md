@@ -20,14 +20,30 @@ UNTIS-Datenexport durchführen. Dateien speichern in `data`:
 
 ### Dev
 
-```
+Run
+
+```bash
 $ php json.php > data/schedule.json
 ```
 
 in `schedule.ts`: `DEBUG = true`
+
+Compile TypeScript:
+
+```bash
+$ tsc
+```
 
 Live Server
 
 ### Production
 
 in `schedule.ts`: `DEBUG = false`
+
+Compile TypeScript:
+
+```bash
+$ tsc
+```
+
+Upload
